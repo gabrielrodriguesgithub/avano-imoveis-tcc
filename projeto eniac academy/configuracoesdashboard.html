@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurações</title>
+
+<link rel="stylesheet" href="configuracoesdashboard.css">
+
+<!-- 🔥 aplica tema antes de carregar tudo (evita flash branco) -->
+<script>
+(function () {
+    const tema = localStorage.getItem("tema") || "claro";
+    if (tema === "escuro") {
+        document.documentElement.classList.add("dark-mode");
+    }
+})();
+</script>
+
+<script defer src="configuracoesdashboard.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>⚙ Configurações</h1>
+</header>
+
+<main>
+    <form onsubmit="event.preventDefault(); salvarConfiguracoes();">
+
+        <label for="tema">Tema:</label>
+
+        <!-- 🔥 SELECT DO TEMA -->
+        <select id="tema" name="tema">
+            <option value="claro">Claro</option>
+            <option value="escuro">Escuro</option>
+        </select>
+
+        <button type="submit">Salvar</button>
+
+    </form>
+</main>
+
+<!-- 🔥 BOTÃO -->
+<div class="btn-container">
+    <a href="dashboard.html" class="btn">Voltar ao Dashboard</a>
+</div>
+
+</body>
+</html>

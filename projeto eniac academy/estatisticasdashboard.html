@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estatísticas - Avano Imóveis</title>
+
+<link rel="stylesheet" href="estatisticasdashboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script defer src="estatisticasdashboard.js"></script>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <h1>📊 Painel de Estatísticas</h1>
+    <p>Acompanhe o desempenho da Avano Imóveis</p>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main>
+
+<section class="stats-container">
+
+    <!-- 📈 GRÁFICO -->
+    <div class="card">
+        <h2>📈 Crescimento de Visitas</h2>
+        <p>Visualize o aumento de acessos e interesse nos imóveis ao longo dos meses.</p>
+        <canvas id="grafico"></canvas>
+    </div>
+
+    <!-- 👥 CLIENTES -->
+    <div class="card">
+        <h2>👥 Clientes Ativos</h2>
+        <p>Total de clientes interagindo com a plataforma neste mês.</p>
+        <span id="usuariosAtivos">0</span>
+    </div>
+
+    <!-- 🏠 IMÓVEIS -->
+    <div class="card">
+        <h2>🏠 Imóveis Cadastrados</h2>
+        <p>Quantidade de imóveis disponíveis na plataforma.</p>
+        <span id="totalImoveis">0</span>
+    </div>
+
+    <!-- 📅 VISITAS -->
+    <div class="card">
+        <h2>📅 Visitas Agendadas</h2>
+        <p>Total de visitas marcadas pelos clientes.</p>
+        <span id="visitasAgendadas">0</span>
+    </div>
+
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2026 Avano Imóveis — Dados internos e estratégicos</p>
+</footer>
+
+<!-- ================= BOTÃO ================= -->
+<div class="botao-container">
+    <a href="dashboard.html" class="botao-voltar">⬅ Voltar ao Dashboard</a>
+</div>
+
+</body>
+</html>

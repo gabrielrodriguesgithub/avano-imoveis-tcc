@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Avano Imóveis</title>
+
+<link rel="stylesheet" href="dash.css">
+<link rel="stylesheet" href="dashboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script src="dashboard.js" defer></script>
+</head>
+
+<body>
+
+<!-- ================= HEADER PADRÃO ================= -->
+<header>
+<nav class="navbar">
+
+<div class="logo">
+<a href="RotasDFrontend.html">
+<img src="avano-imoveis-logo-transparente-sem-borda.png" alt="Logo Avano Imóveis">
+</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="RotasDFrontend.html">Home</a></li>
+<li><a href="imoveis.html">Imóveis</a></li>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="#" onclick="logout()">Sair</a></li>
+</ul>
+
+</nav>
+</header>
+
+<!-- ================= DASHBOARD ================= -->
+<div class="dashboard-container">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+<h2>Painel</h2>
+
+<nav>
+<ul>
+<li><a href="dashboard.html">🏠 Visão Geral</a></li>
+<li><a href="estatisticasdashboard.html">📊 Estatísticas</a></li>
+<li><a href="usuariosdashboard.html">👥 Painel</a></li>
+<li><a href="configuracoesdashboard.html">⚙ Configurações</a></li>
+</ul>
+</nav>
+
+<button id="logoutBtn">🚪 Sair</button>
+
+</aside>
+
+<!-- CONTEÚDO -->
+<main>
+
+<!-- TOPO -->
+<section class="dashboard-header">
+<h1>Bem-vindo ao Dashboard</h1>
+<p>Gerencie usuários, dados e informações da plataforma.</p>
+</section>
+
+<!-- CARDS -->
+<section class="stats">
+
+<div class="card">
+<h3>Total de Usuários</h3>
+<span id="total-users">0</span>
+</div>
+
+<div class="card">
+<h3>Novos Hoje</h3>
+<span id="new-users">0</span>
+</div>
+
+<div class="card">
+<h3>Receita</h3>
+<span id="revenue">R$ 0,00</span>
+</div>
+
+</section>
+
+<!-- GRÁFICO -->
+<section class="charts">
+<h2>Crescimento de Usuários</h2>
+<canvas id="userChart"></canvas>
+</section>
+
+<!-- TABELA -->
+<section class="user-table">
+
+<h2>Lista de Usuários</h2>
+
+<div class="table-actions">
+<input type="text" id="search" placeholder="🔍 Buscar usuário...">
+<button id="export">📥 Exportar CSV</button>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Nome</th>
+<th>Email</th>
+</tr>
+</thead>
+
+<tbody id="user-list"></tbody>
+
+</table>
+
+</section>
+
+</main>
+</div>
+
+<!-- ================= JS ================= -->
+
+<script>
+function logout() {
+    sessionStorage.removeItem("user");
+    window.location.href = "login.html";
+}
+
+document.getElementById("logoutBtn")?.addEventListener("click", logout);
+</script>
+
+<!-- TEMA -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const temaSalvo = localStorage.getItem("tema") || localStorage.getItem("dashboardTema");
+    if (temaSalvo) {
+        aplicarTema(temaSalvo);
+    }
+});
+
+function aplicarTema(tema) {
+    document.body.classList.toggle("dark-mode", tema === "escuro");
+}
+</script>
+
+</body>
+</html>

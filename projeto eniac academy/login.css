@@ -1,0 +1,243 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================= BODY ================= */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    background:
+    linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.9)),
+    url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4');
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* ================= HEADER ================= */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background: linear-gradient(90deg, #dcd8d8 20%, #714b4b 70%, #73030e 100%);
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    z-index:1000;
+    backdrop-filter: blur(10px);
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:60px;
+    padding:10px 20px;
+}
+
+/* ================= LOGO ================= */
+.logo img{
+    width:140px;
+    transition:0.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.08);
+}
+
+/* ================= MENU ================= */
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    margin-left:240px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.3px;
+    padding:10px 18px;
+    border-radius:12px;
+
+    background: rgba(255,255,255,0.6);
+    color:#5e3636;
+
+    border:1px solid rgba(255,255,255,0.4);
+    backdrop-filter: blur(8px);
+
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover{
+    color:#fff;
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(183,28,28,0.5);
+}
+
+/* ================= FORM ================= */
+.container {
+    width: 100%;
+    max-width: 420px;
+
+    background: rgba(255,255,255,0.95);
+    padding: 40px;
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(12px);
+
+    transition:0.3s;
+}
+
+.container:hover{
+    transform:translateY(-6px);
+}
+
+/* TÍTULO */
+h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color:#2b2b2b;
+}
+
+/* ================= INPUTS ================= */
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+
+    border:1px solid #e0e0e0;
+    border-radius:12px;
+
+    background:#fafafa;
+
+    font-size:14px;
+
+    transition:0.3s;
+}
+
+input::placeholder{
+    color:#aaa;
+}
+
+input:focus{
+    border:1px solid #d32f2f;
+    box-shadow:0 0 10px rgba(211,47,47,0.3);
+    background:white;
+    outline:none;
+}
+
+/* ================= BOTÃO ================= */
+button {
+    width: 100%;
+    padding: 14px;
+
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    color: white;
+
+    border: none;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing:0.4px;
+
+    margin-top: 10px;
+
+    transition: all 0.3s ease;
+
+    box-shadow:0 12px 30px rgba(183,28,28,0.4);
+}
+
+/* hover real (corrigido) */
+button:hover{
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:0 18px 40px rgba(183,28,28,0.6);
+}
+
+button:active{
+    transform:scale(0.96);
+}
+
+/* ================= RECAPTCHA ================= */
+.g-recaptcha {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+/* ================= TERMOS ================= */
+.terms-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.terms-container a {
+    color: #b71c1c;
+    font-weight: 600;
+}
+
+.terms-container a:hover {
+    text-decoration: underline;
+}
+
+/* ================= ERROS ================= */
+p.error {
+    color: red;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+/* ================= LINKS LOGIN ================= */
+
+.links-login {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.links-login a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.7);
+    color:#5e3636;
+
+    border:1px solid rgba(0,0,0,0.08);
+
+    transition: all 0.3s ease;
+}
+
+.links-login a:hover {
+    color:#fff;
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    transform: translateY(-2px);
+    box-shadow:0 6px 18px rgba(183,28,28,0.5);
+}
