@@ -89,10 +89,9 @@ header{
 /* ================= FORM ================= */
 .container {
     width: 100%;
-    max-width: 420px;
-
+    max-width: 320px; /* menor */
     background: rgba(255,255,255,0.95);
-    padding: 40px;
+    padding: 22px; /* menor */
     border-radius: 20px;
 
     text-align: center;
@@ -110,8 +109,8 @@ header{
 
 /* TÍTULO */
 h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
+    margin-bottom: 14px;
+    font-size: 22px; /* menor */
     font-weight: 700;
     color:#2b2b2b;
 }
@@ -119,15 +118,15 @@ h2 {
 /* ================= INPUTS ================= */
 input {
     width: 100%;
-    padding: 14px;
-    margin: 10px 0;
+    padding: 10px; /* menor */
+    margin: 6px 0; /* menor */
 
     border:1px solid #e0e0e0;
     border-radius:12px;
 
     background:#fafafa;
 
-    font-size:14px;
+    font-size:13px; /* menor */
 
     transition:0.3s;
 }
@@ -146,7 +145,7 @@ input:focus{
 /* ================= BOTÃO ================= */
 button {
     width: 100%;
-    padding: 14px;
+    padding: 10px; /* menor */
 
     background: linear-gradient(135deg, #d32f2f, #b71c1c);
     color: white;
@@ -156,18 +155,17 @@ button {
 
     cursor: pointer;
 
-    font-size: 16px;
+    font-size: 14px; /* menor */
     font-weight: 600;
     letter-spacing:0.4px;
 
-    margin-top: 10px;
+    margin-top: 6px; /* menor */
 
     transition: all 0.3s ease;
 
     box-shadow:0 12px 30px rgba(183,28,28,0.4);
 }
 
-/* hover real (corrigido) */
 button:hover{
     transform:translateY(-3px) scale(1.04);
     box-shadow:0 18px 40px rgba(183,28,28,0.6);
@@ -181,7 +179,9 @@ button:active{
 .g-recaptcha {
     display: flex;
     justify-content: center;
-    margin: 10px auto;
+    margin: 6px auto;
+    transform: scale(0.9); /* menor */
+    transform-origin: center;
 }
 
 /* ================= TERMOS ================= */
@@ -189,8 +189,8 @@ button:active{
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
-    margin-top: 10px;
+    font-size: 12px; /* menor */
+    margin-top: 6px;
     justify-content: center;
 }
 
@@ -206,14 +206,13 @@ button:active{
 /* ================= ERROS ================= */
 p.error {
     color: red;
-    margin-top: 10px;
-    font-size: 13px;
+    margin-top: 8px;
+    font-size: 12px;
 }
 
 /* ================= LINKS LOGIN ================= */
-
 .links-login {
-    margin-top: 20px;
+    margin-top: 12px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -222,9 +221,9 @@ p.error {
 
 .links-login a {
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px; /* menor */
     font-weight: 500;
-    padding: 8px 12px;
+    padding: 6px 10px; /* menor */
     border-radius: 10px;
 
     background: rgba(255,255,255,0.7);

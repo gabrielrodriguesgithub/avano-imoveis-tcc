@@ -1,0 +1,26 @@
+{
+  "name": "avano-imoveis-backend",
+  "version": "1.0.0",
+  "description": "Backend para o projeto Avano Imóveis usando Node.js, Express, SQLite e JWT.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "init-db": "node scripts/initDb.js"
+  },
+  "keywords": ["express", "sqlite", "jwt", "backend"],
+  "author": "Avano Imóveis",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

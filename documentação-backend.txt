@@ -1,0 +1,391 @@
+# 📚 Documentação Completa - Backend Avano Imóveis
+
+## 📑 Índice
+1. [Visão Geral](#visão-geral)
+2. [Arquitetura](#arquitetura)
+3. [Estrutura de Diretórios](#estrutura-de-diretórios)
+4. [Banco de Dados](#banco-de-dados)
+5. [Endpoints da API](#endpoints-da-api)
+6. [Como Executar Localmente](#como-executar-localmente)
+7. [Visualização de Dados](#visualização-de-dados)
+
+---
+
+## 🎯 Visão Geral
+
+**Backend Stack**:
+- Runtime: Node.js
+- Framework: Express.js
+- Banco: SQLite3
+- Auth: JWT
+- Porta: 4000
+
+---
+
+## 🏗️ Arquitetura
+
+Padrão **Layered Architecture (MVC)**:
+
+```
+ROUTES (Define endpoints e rotas)
+    ↓
+CONTROLLERS (Recebem requisições)
+    ↓
+SERVICES (Lógica de negócio)
+    ↓
+MODELS (Data Access - queries SQL)
+    ↓
+DATABASE (SQLite3)
+```
+
+---
+
+## 📁 Estrutura de Diretórios
+
+```
+backend/
+├── config/db.js              # Funções CRUD SQLite
+├── controllers/              # 7 controladores
+├── models/                   # 5 modelos de dados
+├── services/                 # 7 serviços
+├── routes/                   # 7 rotas
+├── middlewares/              # authMiddleware, errorMiddleware
+├── utils/                    # response.js, validators.js
+├── db/
+│   ├── database.sqlite       # Arquivo do banco
+│   └── init.sql              # Script de inicialização
+├── scripts/initDb.js         # Seed do banco
+├── app.js                    # Entrada principal
+└── package.json              # Dependências
+```
+
+---
+
+## 💾 Banco de Dados
+
+### Tipo: SQLite3
+**Local**: `backend/db/database.sqlite`
+
+### Tabelas:
+
+#### 1. **users**
+```
+id (PK) | first_name | last_name | username | email (UNIQUE) | password_hash | role | created_at | updated_at
+```
+
+**Dados Padrão**:
+- Admin: admin@example.com / admin123
+
+#### 2. **properties**
+```
+id (PK) | title | description | type | neighborhood | price | status | bedrooms | bathrooms | area | address | owner_id (FK→users) | image_url | created_at | updated_at
+```
+
+#### 3. **appointments**
+```
+id (PK) | user_id (FK→users) | property_id (FK→properties) | scheduled_date | scheduled_time | status | notes | created_at | updated_at
+```
+
+#### 4. **config**
+```
+id (PK) | key (UNIQUE) | value
+```
+
+**Padrão**: tema = 'claro'
+
+#### 5. **support_messages**
+```
+id (PK) | user_id (FK→users) | name | email | subject | message | status | created_at | updated_at
+```
+
+---
+
+## 🔌 Endpoints da API
+
+### Base URL: `http://localhost:4000/api`
+
+### Formato Padrão
+```json
+{
+  "success": true/false,
+  "data": { /* dados */ },
+  "message": "descrição"
+}
+```
+
+---
+
+### 🔐 AUTENTICAÇÃO (`/api/auth`)
+
+| Método | Rota | Descrição | Auth Requerida |
+|--------|------|-----------|---|
+| POST | `/register` | Registrar novo usuário | ❌ |
+| POST | `/login` | Fazer login (retorna JWT) | ❌ |
+| POST | `/reset-password` | Resetar senha | ❌ |
+| GET | `/me` | Obter perfil atual | ✅ |
+| POST | `/logout` | Logout | ✅ |
+
+**Exemplo Login**:
+```bash
+POST /api/auth/login
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
+
+Response:
+{
+  "success": true,
+  "data": {
+    "token": "eyJhbGc...",
+    "user": { "id": 1, "email": "admin@example.com" }
+  }
+}
+```
+
+**Guardar Token**:
+```javascript
+localStorage.setItem('token', response.data.token);
+```
+
+**Usar em Requisições**:
+```
+Authorization: Bearer eyJhbGc...
+```
+
+---
+
+### 👥 USUÁRIOS (`/api/users`) ✅ Requer Auth
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/` | Listar todos |
+| GET | `/:id` | Obter por ID |
+| POST | `/` | Criar novo |
+| PUT | `/:id` | Atualizar |
+| DELETE | `/:id` | Deletar |
+
+**Criar Usuário**:
+```bash
+POST /api/users
+{
+  "first_name": "João",
+  "last_name": "Silva",
+  "email": "joao@example.com",
+  "password": "senha123"
+}
+```
+
+---
+
+### 🏠 IMÓVEIS (`/api/properties`)
+
+| Método | Rota | Descrição | Auth |
+|--------|------|-----------|------|
+| GET | `/` | Listar (com filtros) | ❌ |
+| GET | `/:id` | Obter por ID | ❌ |
+| POST | `/` | Criar | ✅ |
+| PUT | `/:id` | Atualizar | ✅ |
+| DELETE | `/:id` | Deletar | ✅ |
+
+**Listar com Filtros**:
+```bash
+GET /api/properties?tipo=apartamento&bairro=Centro&preco=500
+```
+
+**Filtros Disponíveis**:
+- `tipo`: casa, apartamento, etc
+- `bairro`: qualquer string
+- `preco`: 200, 500, 1000 (faixas)
+- `minPrice`, `maxPrice`: números
+- `status`: disponível, vendido
+
+---
+
+### 📅 AGENDAMENTOS (`/api/appointments`) ✅ Requer Auth
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/` | Listar |
+| GET | `/:id` | Obter |
+| POST | `/` | Criar |
+| PUT | `/:id` | Atualizar |
+| DELETE | `/:id` | Deletar |
+
+**Criar Agendamento**:
+```bash
+POST /api/appointments
+{
+  "user_id": 2,
+  "property_id": 1,
+  "scheduled_date": "2024-05-25",
+  "scheduled_time": "15:00",
+  "status": "pendente",
+  "notes": "Primeira visita"
+}
+```
+
+---
+
+### 📊 DASHBOARD (`/api/dashboard`) ✅ Requer Auth
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/stats` | Totais de usuários, imóveis, agendamentos |
+| GET | `/metrics` | Métricas detalhadas |
+| GET | `/visits-monthly` | Visitas por mês (para gráficos) |
+
+**Stats Response**:
+```json
+{
+  "totalUsers": 42,
+  "totalProperties": 18,
+  "totalAppointments": 15,
+  "activeAppointments": 7,
+  "soldProperties": 3
+}
+```
+
+---
+
+### ⚙️ CONFIGURAÇÕES (`/api/config`) ✅ Requer Auth
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/` | Obter configs |
+| PUT | `/` | Atualizar config |
+
+**Update Config**:
+```bash
+PUT /api/config
+{
+  "key": "tema",
+  "value": "escuro"
+}
+```
+
+---
+
+### 💬 SUPORTE (`/api/support`)
+
+| Método | Rota | Descrição | Auth |
+|--------|------|-----------|------|
+| POST | `/messages` | Criar mensagem | ❌ |
+| GET | `/messages` | Listar | ✅ |
+| GET | `/messages/:id` | Obter | ✅ |
+| PUT | `/messages/:id` | Atualizar | ✅ |
+| DELETE | `/messages/:id` | Deletar | ✅ |
+
+**Criar Suporte**:
+```bash
+POST /api/support/messages
+{
+  "name": "João",
+  "email": "joao@email.com",
+  "subject": "Dúvida",
+  "message": "Conteúdo da mensagem"
+}
+```
+
+---
+
+## 🚀 Como Executar Localmente
+
+### Pré-requisitos
+- Node.js 14+
+- npm ou yarn
+
+### Passos
+
+**1. Instalar Dependências**:
+```bash
+cd backend
+npm install
+```
+
+**2. Inicializar Banco**:
+```bash
+npm run init-db
+```
+
+Cria:
+- `db/database.sqlite`
+- 5 tabelas
+- Admin padrão (admin@example.com / admin123)
+
+**3. Executar Servidor**:
+```bash
+# Produção
+npm start
+
+# Desenvolvimento (auto-reload)
+npm run dev
+```
+
+**Saída esperada**:
+```
+Servidor rodando em http://localhost:4000
+```
+
+---
+
+## 📊 Visualização de Dados
+
+### Opção 1: SQLite Browser (Recomendado)
+1. Download: https://sqlitebrowser.org/dl/
+2. File → Open → `backend/db/database.sqlite`
+3. Browse Data para ver/editar dados
+
+### Opção 2: Terminal
+```bash
+sqlite3 backend/db/database.sqlite
+.tables                 # Ver tabelas
+SELECT * FROM users;    # Ver usuários
+.quit                   # Sair
+```
+
+### Opção 3: Online
+https://sqliteonline.com/ → Upload database.sqlite
+
+### Opção 4: VS Code Extension
+Instale "SQLite" extension → Click direito em database.sqlite → Open Database
+
+### Queries Úteis
+```sql
+-- Usuários com agendamentos
+SELECT u.first_name, COUNT(a.id) FROM users u
+LEFT JOIN appointments a ON u.id = a.user_id
+GROUP BY u.id;
+
+-- Imóveis mais caros
+SELECT title, price FROM properties
+ORDER BY price DESC LIMIT 10;
+
+-- Agendamentos de maio
+SELECT u.first_name, p.title, a.scheduled_date
+FROM appointments a
+JOIN users u ON a.user_id = u.id
+JOIN properties p ON a.property_id = p.id
+WHERE strftime('%Y-%m', a.scheduled_date) = '2024-05';
+```
+
+---
+
+## 📋 Resumo de Dados
+
+| Item | Descrição |
+|------|-----------|
+| **Banco** | SQLite3 |
+| **Arquivo** | `backend/db/database.sqlite` |
+| **Tabelas** | 5 (users, properties, appointments, config, support_messages) |
+| **API URL** | `http://localhost:4000/api` |
+| **Porta** | 4000 |
+| **Admin Padrão** | admin@example.com / admin123 |
+| **Inicializar** | `npm run init-db` |
+| **Iniciar** | `npm start` |
+| **Dev** | `npm run dev` |
+
+---
+
+**Documentação atualizada em**: 02 de Maio de 2026
+

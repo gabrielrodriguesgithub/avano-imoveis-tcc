@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avano Imóveis</title>
+
+<link rel="stylesheet" href="pagina.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+
+        <div class="logo">
+            <img src="avano-imoveis-logo-transparente-sem-borda.png">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#" onclick="filtrar('')">Todos</a></li>
+            <li><a href="#" onclick="filtrar('compra')">Comprar</a></li>
+            <li><a href="#" onclick="filtrar('aluguel')">Alugar</a></li>
+            <li><a href="#" onclick="filtrar('venda')">Venda</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Encontre o imóvel perfeito</h1>
+    <p>Casas, apartamentos e oportunidades incríveis para você.</p>
+
+    <button class="btn-principal">Explorar imóveis</button>
+</section>
+
+<section class="features" id="lista">
+
+    <!-- IMÓVEL 1 -->
+    <div class="feature" data-tipo="compra">
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994">
+        <h3>Casa Moderna</h3>
+        <p>📍 São Paulo</p>
+        <p>💰 R$ 450.000</p>
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20na%20Casa%20Moderna%20em%20São%20Paulo', '_blank')">
+            Tenho interesse
+        </button>
+    </div>
+
+    <!-- IMÓVEL 2 -->
+    <div class="feature" data-tipo="aluguel">
+        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688">
+        <h3>Apartamento Centro</h3>
+        <p>📍 Guarulhos</p>
+        <p>💰 R$ 2.200/mês</p>
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20no%20Apartamento%20no%20Centro%20de%20Guarulhos', '_blank')">
+            Tenho interesse
+        </button>
+    </div>
+
+    <!-- IMÓVEL 3 -->
+    <div class="feature" data-tipo="venda">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
+        <h3>Casa para Venda</h3>
+        <p>📍 Osasco</p>
+        <p>💰 R$ 380.000</p>
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20na%20Casa%20em%20Osasco', '_blank')">
+            Tenho interesse
+        </button>
+    </div>
+
+    <!-- IMÓVEL 4 -->
+    <div class="feature" data-tipo="compra">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be">
+        <h3>Casa Luxo</h3>
+        <p>📍 Alphaville</p>
+        <p>💰 R$ 1.200.000</p>
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20na%20Casa%20de%20Luxo%20em%20Alphaville', '_blank')">
+            Tenho interesse
+        </button>
+    </div>
+
+</section>
+
+<section class="cta-final">
+    <h2>Quer vender ou alugar seu imóvel?</h2>
+
+    <div class="cta-botoes">
+        <button class="btn-agendar" onclick="window.open('https://wa.me/5511996134517?text=Olá,%20quero%20anunciar%20meu%20imóvel', '_blank')">
+            Anunciar imóvel
+        </button>
+
+        <button class="btn-corretor" onclick="window.open('https://wa.me/5511996134517?text=Olá,%20quero%20falar%20com%20um%20corretor', '_blank')">
+            Falar com corretor
+        </button>
+    </div>
+</section>
+
+<footer class="footer-custom">
+    <div class="footer-bottom">
+        <p>&copy; 2026 Avano Imóveis</p>
+    </div>
+</footer>
+
+<!-- SUPORTE -->
+<div class="suporte-flutuante" onclick="abrirSuporte()">Suporte</div>
+
+<div class="suporte-janela" id="suporte">
+    <div class="suporte-header">
+        Suporte
+        <span onclick="fecharSuporte()">✖</span>
+    </div>
+
+    <div class="suporte-conteudo">
+        <p>📞 (11) 99613-4517</p>
+        <p><a href="mailto:soares-jr@oul.com.br">📧 Email</a></p>
+
+        <button onclick="window.open('https://wa.me/5511996134517', '_blank')">
+            WhatsApp
+        </button>
+    </div>
+</div>
+
+<script src="pagina.js"></script>
+
+</body>
+</html>
