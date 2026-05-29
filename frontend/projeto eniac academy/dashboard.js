@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const token = localStorage.getItem('token');
         if (!token) {
             alert('Você precisa estar logado para acessar o Dashboard!');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
             return;
         }
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok || !body.success) {
                 if (response.status === 401) {
-                    window.location.href = 'login.html';
+                    window.location.href = 'index.html';
                     return;
                 }
                 throw new Error(body.message || 'Erro ao carregar usuários');
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutButton.addEventListener('click', () => {
             localStorage.removeItem('token');
             alert('Você saiu da conta.');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
     }
 
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok || !body.success) {
                 if (response.status === 401) {
-                    window.location.href = 'login.html';
+                    window.location.href = 'index.html';
                     return;
                 }
                 throw new Error(body.message || 'Erro ao carregar configurações');
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok || !body.success) {
                     if (response.status === 401) {
-                        window.location.href = 'login.html';
+                        window.location.href = 'index.html';
                         return;
                     }
                     throw new Error(body.message || 'Erro ao salvar configuração');
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok || !body.success) {
                 if (response.status === 401) {
-                    window.location.href = 'login.html';
+                    window.location.href = 'index.html';
                     return;
                 }
                 throw new Error(body.message || 'Erro ao carregar estatísticas');
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok || !body.success) {
                 if (response.status === 401) {
-                    window.location.href = 'login.html';
+                    window.location.href = 'index.html';
                     return;
                 }
                 throw new Error(body.message || 'Erro ao carregar dados do gráfico');
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error(error);
-        }             window.location.href = 'login.html';
+        }             window.location.href = 'index.html';
                         return;
                     }
                     throw new Error(body.message || 'Erro ao salvar configuração');
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok || !body.success) {
                 if (response.status === 401) {
-                    window.location.href = 'login.html';
+                    window.location.href = 'index.html';
                     return;
                 }
                 throw new Error(body.message || 'Erro ao carregar estatísticas');
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok || !body.success) {
                 if (response.status === 401) {
-                    window.location.href = 'login.html';
+                    window.location.href = 'index.html';
                     return;
                 }
                 throw new Error(body.message || 'Erro ao carregar dados do gráfico');

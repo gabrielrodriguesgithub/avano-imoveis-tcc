@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (!response.ok || !body.success) {
         if (response.status === 401) {
-          window.location.href = 'login.html';
+          window.location.href = 'index.html';
           return;
         }
         throw new Error(body.message || 'Erro ao carregar usuários');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!response.ok || !body.success) {
           if (response.status === 401) {
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
             return;
           }
           throw new Error(body.message || 'Erro ao criar usuário');
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           if (!response.ok || !body.success) {
             if (response.status === 401) {
-              window.location.href = 'login.html';
+              window.location.href = 'index.html';
               return;
             }
             throw new Error(body.message || 'Erro ao excluir usuário');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           if (!response.ok || !body.success) {
             if (response.status === 401) {
-              window.location.href = 'login.html';
+              window.location.href = 'index.html';
               return;
             }
             throw new Error(body.message || 'Erro ao excluir usuário');

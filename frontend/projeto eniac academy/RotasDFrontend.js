@@ -40,7 +40,7 @@ async function buscarImoveis() {
 
     if (!token) {
         alert('Você precisa fazer login para buscar imóveis.');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
 
@@ -64,7 +64,7 @@ async function buscarImoveis() {
 
         if (!response.ok || !body.success) {
             if (response.status === 401) {
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
                 return;
             }
             throw new Error(body.message || 'Erro ao buscar imóveis');
@@ -86,7 +86,7 @@ function irParaAgendamento() {
 
     if (!token) {
         alert('Você precisa estar logado para agendar uma visita.');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
 
@@ -99,7 +99,7 @@ function irParaCorretor() {
 
     if (!token) {
         alert('Você precisa estar logado para falar com um corretor.');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
 
@@ -114,7 +114,7 @@ function irParaConta() {
     if (token) {
         window.location.href = 'dashboard.html';
     } else {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     }
 }
 
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (paginasProtegidas.includes(paginaAtual) && !user) {
         alert("Acesso restrito. Faça login primeiro.");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
 
 })();
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!user) return;
 
     const paginasBloqueadas = [
-        "login.html"
+        "index.html"
     ];
 
     if (paginasBloqueadas.includes(paginaAtual)) {
