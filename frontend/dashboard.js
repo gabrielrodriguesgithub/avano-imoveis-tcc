@@ -1,5 +1,3 @@
-const API_BASE_URL = 'http://localhost:4000/api';
-
 function getAuthHeaders() {
     return {
         'Content-Type': 'application/json',
