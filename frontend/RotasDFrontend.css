@@ -462,3 +462,11 @@ backdrop-filter: blur(10px);
 
 transition: all 0.3s ease;
 }
+
+.btn-dashboard:hover{
+color:#fff;
+background: linear-gradient(135deg, #ff4d4d, #e53935);
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(229,57,53,0.4);
+cursor:pointer;
+}
