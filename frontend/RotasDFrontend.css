@@ -447,3 +447,18 @@ justify-content:space-between;
 .suporte-conteudo{
 padding:16px;
 }
+
+.btn-dashboard{
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+padding:10px 18px;
+border-radius:12px;
+color:#5e3636;
+
+background: rgba(255,255,255,0.7);
+border:1px solid rgba(255,255,255,0.5);
+backdrop-filter: blur(10px);
+
+transition: all 0.3s ease;
+}

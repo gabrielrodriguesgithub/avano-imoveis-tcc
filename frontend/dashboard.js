@@ -244,18 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error(error);
-        }             window.location.href = 'index.html';
-                        return;
-                    }
-                    throw new Error(body.message || 'Erro ao salvar configuração');
-                }
-
-                aplicarTema(tema);
-            } catch (error) {
-                console.error(error);
-            }
-        });
-    }
+            window.location.href = 'index.html';
+            throw new Error(body.message || 'Erro ao salvar configuração');
+            aplicarTema(tema);
+        } 
+    };
+    
 
     if (exportButton) {
         exportButton.addEventListener('click', () => {
@@ -387,4 +381,4 @@ function AcessarDashboard() {
         window.location.href = 'index.html';
     } else {
         window.location.href = 'dashboard.html';
-}
+}};
