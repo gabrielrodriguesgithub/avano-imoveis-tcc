@@ -88,7 +88,7 @@ function irParaAgendamento() {
         return;
     }
 
-    window.location.href = 'agendamento.html';
+    window.open('https://wa.me/5511996134517?text=Olá,%20quero%20agendar%20uma%20visita', '_blank');        
 }
 
 // 💬 FALAR COM CORRETOR
@@ -101,7 +101,8 @@ function irParaCorretor() {
         return;
     }
 
-    window.location.href = 'imoveis.html';
+    
+    window.open('https://wa.me/5511996134517?text=Olá,%20quero%20falar%20com%20um%20corretor', '_blank');        
 }
 
 /* ================= BOTÃO INTELIGENTE ================= */

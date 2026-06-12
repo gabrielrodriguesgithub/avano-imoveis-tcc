@@ -6,6 +6,7 @@
 <title>Avano Imóveis</title>
 
 <link rel="stylesheet" href="RotasDFrontend.css">
+<script src="dashboard.js" defer></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
 
 <ul class="nav-links">
 <li><a href="RotasDFrontend.html">Home</a></li>
-<li><a href="index.html">Login</a></li>
+<li><a href="#" onclick="logout()">Sair</a></li>
 <li><a href="dashboard.html">Dashboard</a></li>
 
 <li>
@@ -44,7 +45,7 @@ Conectando você ao imóvel perfeito para o seu futuro.
 Explore oportunidades de compra, venda ou aluguel com segurança.
 </p>
 
-<form class="busca-container" onsubmit="event.preventDefault(); buscarImoveis();">
+<!-- <form class="busca-container" onsubmit="event.preventDefault(); buscarImoveis();">
 
     <div class="busca-item">
         <select id="tipo" name="tipo">
@@ -77,7 +78,7 @@ Explore oportunidades de compra, venda ou aluguel com segurança.
         Buscar
     </button>
 
-</form>
+</form> -->
 <br>
 <br>
 <button class="btn-principal" onclick="irParaConta()">
@@ -168,10 +169,10 @@ Sua imobiliária de confiança. Encontre o imóvel perfeito com atendimento pers
 <div class="footer-col">
 <h4>Links Rápidos</h4>
 <ul>
-<li><a href="imoveis.html?tipo=venda">Imóveis à Venda</a></li>
-<li><a href="imoveis.html?tipo=aluguel">Imóveis para Alugar</a></li>
+<li><a href="pagina.html">Imóveis à Venda</a></li>
+<li><a href="pagina.html">Imóveis para Alugar</a></li>
 <li><a href="#sobre">Sobre Nós</a></li>
-<li><a href="https://web.facebook.com/imoveisavano">Facebook</a></li>
+<li><a href="https://web.facebook.com/imoveisavano" target="_blank">Facebook</a></li>
 </ul>
 </div>
 
