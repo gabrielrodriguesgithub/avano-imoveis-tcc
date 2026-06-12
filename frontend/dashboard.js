@@ -378,3 +378,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkAuth();
 });
+
+function AcessarDashboard() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('Você precisa fazer login para acessar o Dashboard!');
+        window.location.href = 'index.html';
+    } else {
+        window.location.href = 'dashboard.html';
+}
