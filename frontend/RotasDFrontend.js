@@ -38,7 +38,7 @@ async function buscarImoveis() {
 
     if (!token) {
         alert('Você precisa fazer login para buscar imóveis.');
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
         return;
     }
 
@@ -62,7 +62,7 @@ async function buscarImoveis() {
 
         if (!response.ok || !body.success) {
             if (response.status === 401) {
-                window.location.href = 'index.html';
+                window.location.href = 'login.html';
                 return;
             }
             throw new Error(body.message || 'Erro ao buscar imóveis');
@@ -80,28 +80,11 @@ async function buscarImoveis() {
 
 // 📅 AGENDAR VISITA
 function irParaAgendamento() {
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-        alert('Você precisa estar logado para agendar uma visita.');
-        window.location.href = 'index.html';
-        return;
-    }
-
     window.open('https://wa.me/5511996134517?text=Olá,%20quero%20agendar%20uma%20visita', '_blank');        
 }
 
 // 💬 FALAR COM CORRETOR
 function irParaCorretor() {
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-        alert('Você precisa estar logado para falar com um corretor.');
-        window.location.href = 'index.html';
-        return;
-    }
-
-    
     window.open('https://wa.me/5511996134517?text=Olá,%20quero%20falar%20com%20um%20corretor', '_blank');        
 }
 
@@ -113,7 +96,7 @@ function irParaConta() {
     if (token) {
         window.location.href = 'dashboard.html';
     } else {
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
     }
 }
 
@@ -162,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (paginasProtegidas.includes(paginaAtual) && !user) {
         alert("Acesso restrito. Faça login primeiro.");
-        window.location.href = "index.html";
+        window.location.href = "login.html";
     }
 
 })();
@@ -177,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!user) return;
 
     const paginasBloqueadas = [
-        "index.html"
+        "login.html"
     ];
 
     if (paginasBloqueadas.includes(paginaAtual)) {
@@ -188,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function logout() {
     localStorage.removeItem('token');
-    window.location.href = 'index.html';
+    window.location.href = 'login.html';
 }
 
 function AcessarDashboard() {
@@ -196,7 +179,7 @@ function AcessarDashboard() {
 
     if (!token) {
         alert('Você precisa fazer login para acessar o Dashboard!');
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
     } else {
         window.location.href = 'dashboard.html';
 }};

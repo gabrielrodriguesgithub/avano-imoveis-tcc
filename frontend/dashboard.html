@@ -20,13 +20,13 @@
 <nav class="navbar">
 
 <div class="logo">
-<a href="RotasDFrontend.html">
+<a href="index.html">
 <img src="avano-imoveis-logo-transparente-sem-borda.png" alt="Logo Avano Imóveis">
 </a>
 </div>
 
 <ul class="nav-links">
-<li><a href="RotasDFrontend.html">Home</a></li>
+<li><a href="index.html">Home</a></li>
 <li><a href="imoveis.html">Imóveis</a></li>
 <li><a href="dashboard.html">Dashboard</a></li>
 <li><a href="#" onclick="logout()">Sair</a></li>
@@ -124,7 +124,7 @@
 <script>
 function logout() {
     localStorage.removeItem('token');
-    window.location.href = 'index.html';
+    window.location.href = 'login.html';
 }
 
 document.getElementById('logoutBtn')?.addEventListener('click', logout);

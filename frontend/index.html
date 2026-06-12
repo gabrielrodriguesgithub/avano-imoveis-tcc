@@ -1,124 +1,206 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="config.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avano Imóveis</title>
+
+<link rel="stylesheet" href="RotasDFrontend.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
 <nav class="navbar">
 
 <div class="logo">
-<a href="RotasDFrontend.html">
+<a href="index.html">
 <img src="avano-imoveis-logo-transparente-sem-borda.png" alt="Logo Avano Imóveis">
 </a>
 </div>
 
 <ul class="nav-links">
-<li><a href="RotasDFrontend.html">Home</a></li>
+<li><a href="index.html">Home</a></li>
+<li><a href="#" onclick="logout()">Sair</a></li>
+<li><button class="btn-dashboard" onclick="AcessarDashboard()">Dashboard</button></li>
+
+<li>
+<a href="javascript:void(0)" class="btn-suporte" onclick="abrirSuporte()">Suporte</a>
+</li>
 </ul>
 
 </nav>
 </header>
 
-<br><br><br>
+<main>
 
-<!-- ================= LOGIN ================= -->
-<div id="login" class="container">
-    <h2>Login</h2>
+<!-- ================= HERO ================= -->
+<section class="hero">
 
-    <form id="loginForm">
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Senha" required>
-        <button type="submit">Entrar</button>
-    </form>
+<h1>Encontre o imóvel ideal com a Avano Imóveis</h1>
 
-    <p id="message"></p>
+<p>
+Conectando você ao imóvel perfeito para o seu futuro.
+Explore oportunidades de compra, venda ou aluguel com segurança.
+</p>
 
-    <div class="links-login">
-        <a href="#" onclick="showRegister()">Criar conta</a>
-        <a href="#" onclick="showReset()">Esqueci a senha</a>
-        <a href="RotasDFrontend.html">Voltar ao Home</a>
+<!-- <form class="busca-container" onsubmit="event.preventDefault(); buscarImoveis();">
+
+    <div class="busca-item">
+        <select id="tipo" name="tipo">
+            <option value="">Tipo de Imóvel</option>
+            <option value="casa">Casa</option>
+            <option value="apartamento">Apartamento</option>
+            <option value="terreno">Terreno</option>
+        </select>
     </div>
-</div>
 
-<!-- ================= DASHBOARD ================= -->
-<div id="dashboard" class="container" style="display: none;">
-    <h2>Dashboard</h2>
-    <button id="logout">Sair</button>
-
-    <h3>Lista de Usuários</h3>
-    <ul id="user-list"></ul>
-</div>
-
-<!-- ================= CADASTRO ================= -->
-<div id="registerContainer" class="container" style="display: none;">
-    <h2>Cadastrar</h2>
-
-    <form id="registerForm">
-        <input type="text" id="nome" placeholder="Nome" required>
-        <input type="text" id="sobrenome" placeholder="Sobrenome" required>
-        <input type="text" id="username" placeholder="Nome de Usuário" required>
-        <input type="email" id="registerEmail" placeholder="Email" required>
-
-        <div>
-            <input type="password" id="registerPassword" placeholder="Senha" required>
-            <button type="button" id="toggleRegisterPassword">Mostrar</button>
-        </div>
-
-        <div>
-            <input type="password" id="confirmPassword" placeholder="Confirmar Senha" required>
-            <button type="button" id="toggleConfirmPassword">Mostrar</button>
-        </div>
-
-        <br>
-
-        <!-- reCAPTCHA -->
-        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-
-        <div class="terms-container">
-            <input type="checkbox" id="termsCheckbox" required>
-            <label for="termsCheckbox">
-                Eu aceito os <a href="termos.html" target="_blank">termos e condições</a>
-            </label>
-        </div>
-
-        <br>
-        <button type="submit">Cadastrar</button>
-    </form>
-
-    <p id="registerMessage"></p>
-
-    <div class="links-login">
-        <a href="#" onclick="showLogin()">Já tenho uma conta</a>
+    <div class="busca-item">
+        <select id="bairro" name="bairro">
+            <option value="">Bairro</option>
+            <option value="centro">Centro</option>
+            <option value="zona-norte">Zona Norte</option>
+            <option value="zona-sul">Zona Sul</option>
+        </select>
     </div>
-</div>
 
-<!-- ================= RESET SENHA ================= -->
-<div id="resetContainer" class="container" style="display: none;">
-    <h2>Redefinir Senha</h2>
-
-    <input type="email" id="resetEmail" placeholder="Digite seu email" required>
-    <br>
-
-    <button onclick="resetPassword()">Redefinir</button>
-
-    <p id="resetMessage"></p>
-
-    <div class="links-login">
-        <a href="#" onclick="showLogin()">Voltar ao login</a>
+    <div class="busca-item">
+        <select id="preco" name="preco">
+            <option value="">Faixa de Preço</option>
+            <option value="200">Até 200k</option>
+            <option value="500">200k - 500k</option>
+            <option value="1000">500k+</option>
+        </select>
     </div>
+
+    <button type="submit" class="btn-buscar">
+        Buscar
+    </button>
+
+</form> -->
+<br>
+<br>
+<button class="btn-principal" onclick="irParaConta()">
+Acessar Minha Conta
+</button>
+</section>
+<!-- ================= FEATURES ================= -->
+<section class="features">
+
+<div class="feature">
+<a href="pagina.html">
+<img src="alugar.jpg" alt="Alugar">
+<h3>Alugar</h3>
+<p>Imóveis disponíveis com praticidade.</p>
+</a>
 </div>
 
-<!-- JS -->
-<script src="login.js"></script>
+<div class="feature">
+<a href="pagina.html">
+<img src="comprar.jpg" alt="Comprar">
+<h3>Comprar</h3>
+<p>Encontre oportunidades incríveis.</p>
+</a>
+</div>
+
+<div class="feature">
+<a onclick="window.open('https://wa.me/5511996134517?text=Olá,%20quero%20anunciar%20meu%20imóvel', '_blank')">
+<img src="vender.jpg" alt="Vender">
+<h3>Vender</h3>
+<p>Venda com segurança e rapidez.</p>
+</a>
+</div>
+
+</section>
+
+<!-- ================= SOBRE NÓS ================= -->
+<section id="sobre" class="sobre">
+
+<h2>
+    <a href="#sobre" class="link-sobre">Sobre a Avano Imóveis</a>
+</h2>
+
+<p>
+A Avano Imóveis conecta você ao imóvel ideal com segurança, transparência e um atendimento verdadeiramente personalizado. Nosso foco é entender suas necessidades e oferecer soluções que façam sentido para o seu momento.
+
+Sabemos que comprar, vender ou alugar um imóvel é uma decisão importante. Por isso, trabalhamos com responsabilidade e atenção em cada etapa, garantindo mais tranquilidade e confiança durante todo o processo.
+
+Com uma equipe preparada e dedicada, buscamos sempre as melhores oportunidades do mercado, valorizando o relacionamento com nossos clientes e construindo experiências positivas do início ao fim.
+
+Na Avano Imóveis, você encontra mais do que imóveis — encontra parceria, confiança e o suporte necessário para realizar seus planos.
+</p>
+
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-final">
+
+<h2>Quer encontrar o imóvel ideal?</h2>
+<br>
+
+<p>
+Nossos corretores estão prontos para te ajudar. 
+Agende uma visita ou fale conosco agora.
+</p>
+<br><br>
+
+<div class="cta-botoes">
+<button class="btn-agendar" onclick="irParaAgendamento()">Agendar Visita</button>
+<button class="btn-corretor" onclick="irParaCorretor()">Falar com Corretor</button>
+</div>
+
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-custom">
+
+<div class="footer-container">
+
+<div class="footer-col">
+<h3>Avano<span>Imóveis</span></h3>
+<p>
+Sua imobiliária de confiança. Encontre o imóvel perfeito com atendimento personalizado.
+</p>
+</div>
+
+<div class="footer-col">
+<h4>Links Rápidos</h4>
+<ul>
+<li><a href="pagina.html">Imóveis à Venda</a></li>
+<li><a href="pagina.html">Imóveis para Alugar</a></li>
+<li><a href="#sobre">Sobre Nós</a></li>
+<li><a href="https://web.facebook.com/imoveisavano" target="_blank">Facebook</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Avano Imóveis. Todos os direitos reservados.
+</div>
+
+</footer>
+
+<!-- ================= SUPORTE ================= -->
+<div class="suporte-janela" id="suporteJanela" style="display:none;">
+
+<div class="suporte-header">
+Suporte Avano Imóveis
+<span onclick="fecharSuporte()">✖</span>
+</div>
+
+<div class="suporte-conteudo">
+<p>Precisa de ajuda?</p>
+<p>📞 (11) 99613-4517</p>
+<p>📧 <a href="mailto:soares-jr@oul.com.br">soares-jr@oul.com.br</a></p>
+</div>
+
+</div>
+
+<script src="config.js"></script>
+<script src="RotasDFrontend.js"></script>
 
 </body>
 </html>

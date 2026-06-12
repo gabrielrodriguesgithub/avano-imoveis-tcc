@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function fetchDashboardUsers() {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = 'index.html';
+            window.location.href = 'login.html';
             return;
         }
 
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!response.ok || !body.success) {
                 if (response.status === 401) {
-                    window.location.href = 'index.html';
+                    window.location.href = 'login.html';
                     return;
                 }
                 throw new Error(body.message || 'Erro ao carregar usuários');
