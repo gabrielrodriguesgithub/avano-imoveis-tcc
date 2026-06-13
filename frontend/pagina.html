@@ -38,43 +38,63 @@
 <section class="features" id="lista">
 
     <!-- IMÓVEL 1 -->
-    <div class="feature" data-tipo="compra">
+    <div class="feature" data-tipo="compra" onclick="abrirModal(this);"
+        data-nome="Casa Moderna"
+        data-localizacao="São Paulo"
+        data-preco="R$ 450.000"
+        data-descricao="Casa moderna com 180m² de área construída em bairro residencial tranquilo. Projeto contemporâneo com excelente aproveitamento dos espaços, área gourmet e quintal privativo."
+        data-caracteristicas="3 dormitórios|1 suíte|3 banheiros|Área gourmet|Quintal|Lavanderia|2 vagas de garagem">
         <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994">
         <h3>Casa Moderna</h3>
         <p>📍 São Paulo</p>
         <p>💰 R$ 450.000</p>
-        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20na%20Casa%20Moderna%20em%20São%20Paulo', '_blank')">
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20na%20Casa%20Moderna%20em%20São%20Paulo', '_blank'); event.stopPropagation();">
             Tenho interesse
         </button>
     </div>
 
     <!-- IMÓVEL 2 -->
-    <div class="feature" data-tipo="aluguel">
+    <div class="feature" data-tipo="aluguel" onclick="abrirModal(this);"
+        data-nome="Apartamento Centro"
+        data-localizacao="Guarulhos"
+        data-preco="R$ 2.200/mês"
+        data-descricao="Excelente apartamento de 100m² localizado na região central de Guarulhos. Possui acabamento moderno, ambientes amplos e ótima iluminação natural. Próximo a supermercados, farmácias, escolas e principais vias de acesso da cidade."
+        data-caracteristicas="2 dormitórios|1 suíte|2 banheiros|Sala ampla|Cozinha planejada|Área de serviço|Varanda|1 vaga de garagem">
         <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688">
         <h3>Apartamento Centro</h3>
         <p>📍 Guarulhos</p>
         <p>💰 R$ 2.200/mês</p>
-        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20no%20Apartamento%20no%20Centro%20de%20Guarulhos', '_blank')">
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20no%20Apartamento%20no%20Centro%20de%20Guarulhos', '_blank'); event.stopPropagation();">
             Tenho interesse
         </button>
     </div>
 
     <!-- IMÓVEL 3 -->
-    <div class="feature" data-tipo="venda">
+    <div class="feature" data-tipo="venda" onclick="abrirModal(this);"
+        data-nome="Casa para Venda"
+        data-localizacao="Região Metropolitana"
+        data-preco="Consulte valor"
+        data-descricao="Casa espaçosa disponível para venda em localização estratégica. Imóvel bem estruturado com bom padrão de acabamento e potencial para reforma. Ideal para quem busca investimento imobiliário."
+        data-caracteristicas="Estrutura sólida|Bom tamanho|Potencial de investimento|Localização estratégica">
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
         <h3>Casa para Venda</h3>
-        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20em%20Casa%20vender%20minha%20casa', '_blank')">
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20em%20vender%20minha%20casa', '_blank'); event.stopPropagation();">
             Quero vender meu imovel
         </button>
     </div>
 
     <!-- IMÓVEL 4 -->
-    <div class="feature" data-tipo="compra">
+    <div class="feature" data-tipo="compra" onclick="abrirModal(this);"
+        data-nome="Casa Luxo"
+        data-localizacao="Alphaville"
+        data-preco="R$ 1.200.000"
+        data-descricao="Casa de luxo em condomínio fechado de altíssimo padrão em Alphaville. Projeto arquitetônico exclusivo com acabamentos premium, tecnologias inteligentes e áreas de lazer completas. Segurança 24h e localização privilegiada."
+        data-caracteristicas="4 dormitórios|2 suítes|4 banheiros|Piscina|Sauna|Home theater|Sala de jogos|3 vagas de garagem|Condomínio fechado">
         <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be">
         <h3>Casa Luxo</h3>
         <p>📍 Alphaville</p>
         <p>💰 R$ 1.200.000</p>
-        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20na%20Casa%20de%20Luxo%20em%20Alphaville', '_blank')">
+        <button onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20na%20Casa%20de%20Luxo%20em%20Alphaville', '_blank'); event.stopPropagation();">
             Tenho interesse
         </button>
     </div>
@@ -117,6 +137,35 @@
         <button onclick="window.open('https://wa.me/5511996134517', '_blank')">
             WhatsApp
         </button>
+    </div>
+</div>
+
+<!-- MODAL DETALHES DO IMÓVEL -->
+<div class="modal" id="modalImovel" onclick="fecharModalAoClicarFora(event)">
+    <div class="modal-conteudo" onclick="event.stopPropagation();">
+        <span class="modal-fechar" onclick="fecharModal()">&times;</span>
+        
+        <img class="modal-imagem" id="modalImagem" src="" alt="Imóvel">
+        
+        <div class="modal-info">
+            <h2 id="modalNome" class="modal-nome"></h2>
+            <p class="modal-localizacao"><span id="modalLocalizacao"></span></p>
+            <p class="modal-preco" id="modalPreco"></p>
+            
+            <div class="modal-descricao">
+                <h3>Descrição</h3>
+                <p id="modalDescricaoTexto"></p>
+            </div>
+            
+            <div class="modal-caracteristicas">
+                <h3>Características</h3>
+                <ul id="modalCaracteristicasList"></ul>
+            </div>
+            
+            <button class="modal-botao-interesse" id="modalBotaoInteresse" onclick="window.open('https://wa.me/5511996134517?text=Olá,%20tenho%20interesse%20em%20um%20imóvel', '_blank');">
+                Tenho interesse
+            </button>
+        </div>
     </div>
 </div>
 
